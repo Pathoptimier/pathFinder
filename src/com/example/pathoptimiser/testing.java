@@ -26,4 +26,9 @@ hello its coding time in my branch---guru
 learning to push and pull in git - Taslima
 
 updated from Elena
+<<<<<<< HEAD
+
+new update from Elena
+=======
 >>>>>>> f19d4d531c4e72040118c6d49285c8fe0cad790b
+>>>>>>> b6c07258672a81293f8b407a112386725183c586
