@@ -17,10 +17,18 @@ Learning to push and pull Elena
 ---------------------------
 is upadted or not---aakash
 
+<<<<<<< HEAD
+-----------------
+hello its coding time in my branch---guru
+=======
 >>>>>>> c318fb1526181cf8c8753c3362032cf89993e213
 
 learning to push and pull in git - Taslima
 
 updated from Elena
+<<<<<<< HEAD
 
 new update from Elena
+=======
+>>>>>>> f19d4d531c4e72040118c6d49285c8fe0cad790b
+>>>>>>> b6c07258672a81293f8b407a112386725183c586
