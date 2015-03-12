@@ -1,16 +1,78 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pathoptimiser.Pathoptimiser" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+     tools:context=".MainActivity"
+    android:background="#ff6b5aff">
+    <RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+       android:padding="5dp" >
+        <Button
+            android:id="@+id/addplace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Add Place"
+            android:layout_centerInParent="true"
+            android:background="#ffe8e8e8" />
+    </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+                >
+
+        <TableLayout
+            android:id="@+id/tablelayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        </TableLayout>
+
+        </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_gravity="bottom|center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:padding="10dp"
+                >
 
-</RelativeLayout>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Simple route"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="8dp"
+
+            android:id="@+id/getsimple"
+
+
+            android:background="#ffe8e8e8" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/getshort"
+            android:text="Short route"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="2dp"
+
+            android:background="#ffe8e8e8"
+            />
+
+
+        </LinearLayout>
+
+</LinearLayout>
