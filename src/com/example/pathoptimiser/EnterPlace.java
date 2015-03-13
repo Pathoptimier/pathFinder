@@ -320,3 +320,139 @@ public class Enter_place extends SherlockFragment implements OnClickListener {
 		}
 
 	}
+
+	private class PlacesAutoCompleteAdapter extends ArrayAdapter<String>
+			implements Filterable {
+		private ArrayList<String> resultList;
+
+		public PlacesAutoCompleteAdapter(Context context, int textViewResourceId) {
+			super(context, textViewResourceId);
+		}
+
+		@Override
+		public int getCount() {
+			return resultList.size();
+		}
+
+		@Override
+		public String getItem(int index) {
+			return resultList.get(index);
+		}
+
+		@Override
+		public Filter getFilter() {
+			Filter filter = new Filter() {
+				@Override
+				protected FilterResults performFiltering(CharSequence constraint) {
+					FilterResults filterResults = new FilterResults();
+					if (constraint != null) {
+
+						// Retrieve the autocomplete results.
+						if (!(constraint.toString().equals(""))
+								|| constraint.toString().matches(
+										"^[-+a-zA-Z0-9,.\\s()]*$")) {
+							resultList = autocomplete(constraint.toString());
+						}
+						// Assign the data to the FilterResults
+						filterResults.values = resultList;
+						filterResults.count = resultList.size();
+					}
+					return filterResults;
+				}
+
+				@Override
+				protected void publishResults(CharSequence constraint,
+						FilterResults results) {
+					if (results != null && results.count > 0) {
+						notifyDataSetChanged();
+					} else {
+						notifyDataSetInvalidated();
+					}
+				}
+			};
+			return filter;
+		}
+
+		private ArrayList<String> autocomplete(String input) {
+			ArrayList<String> resultList = null;
+
+			HttpURLConnection conn = null;
+			StringBuilder jsonResults = new StringBuilder();
+			try {
+
+				input = input.replace(" ", "+");
+
+				URL url = new URL(
+						"http://maps.googleapis.com/maps/api/geocode/json?address="
+								+ input + "&sensor=false");
+				conn = (HttpURLConnection) url.openConnection();
+				InputStreamReader in = new InputStreamReader(
+						conn.getInputStream());
+
+				// Load the results into a StringBuilder
+				int read;
+				char[] buff = new char[1024];
+				while ((read = in.read(buff)) != -1) {
+					jsonResults.append(buff, 0, read);
+				}
+
+			} catch (MalformedURLException e) {
+				Log.e("err", "Error processing Places API URL", e);
+				return resultList;
+			} catch (IOException e) {
+				Log.e("err", "Error connecting to Places API", e);
+				return resultList;
+			} finally {
+				if (conn != null) {
+					conn.disconnect();
+				}
+			}
+
+			try {
+				// Create a JSON object hierarchy from the results
+				JSONObject jsonObj = new JSONObject(jsonResults.toString());
+				predsJsonArray = jsonObj.getJSONArray("results");
+
+				// Extract the Place descriptions from the results
+				resultList = new ArrayList<String>(predsJsonArray.length());
+				for (int i = 0; i < predsJsonArray.length(); i++) {
+					resultList.add(predsJsonArray.getJSONObject(i).getString(
+							"formatted_address"));
+				}
+			} catch (JSONException e) {
+				Log.e("err", "Cannot process JSON results", e);
+			}
+
+			return resultList;
+		}
+	}
+
+	/*public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.drawable.entermenu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		 * SharedPreferences myPrefs =
+		 * this.getSharedPreferences("MyPREFERENCES", MODE_WORLD_READABLE);
+		 * String prefName = myPrefs.getString("offlinemap", "nothing");
+		 * if(prefName.equals("nothing")){ Toast.makeText(this, "Not Available",
+		 * Toast.LENGTH_SHORT).show(); } else{ Intent iob = new
+		 * Intent(getApplicationContext(),MapView.class);
+		 * iob.putExtra("jsonresult", prefName); startActivity(iob); }
+		 
+		Intent iob = new Intent(getApplicationContext(), OfflineList.class);
+		startActivity(iob);
+		overridePendingTransition(R.anim.push_right_center,
+				R.anim.pop_center_right);
+		return super.onOptionsItemSelected(item);
+	}*/
+
+}
+
+
+
+
