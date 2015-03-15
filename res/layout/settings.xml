@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg1" >
+
+    <TextView
+        android:id="@+id/tv_travelmode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Travel Mode"
+        android:background="#551176e6"
+        android:padding="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <RadioGroup
+        android:id="@+id/rg_travelmode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5589b6e9"
+         android:padding="5dp">
+        
+	<RadioButton 
+	     android:id="@+id/rb_driving"
+	     android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Driving"
+        android:checked="true"
+        android:drawableLeft="@drawable/driving"
+        />
+	<RadioButton  
+	     android:id="@+id/rb_walking"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Walking"
+        android:drawableLeft="@drawable/walking"
+        />
+	<RadioButton  
+	     android:id="@+id/rb_bicycling"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Bicycling"
+        android:drawableLeft="@drawable/bicycle"
+        />
+	
+</RadioGroup>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#551176e6"
+    android:padding="5dp" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avoid Tolls"
+        android:paddingRight="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ToggleButton
+        android:id="@+id/sw_tolls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="NO"
+        android:textOn="YES" />
+
+</TableRow>
+</LinearLayout>
