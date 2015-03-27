@@ -1,4 +1,4 @@
-package com.shortroute.pathoptimizer;
+package com.example.pathoptimiser;
 
 import android.content.Context;
 import android.content.SharedPreferences;
