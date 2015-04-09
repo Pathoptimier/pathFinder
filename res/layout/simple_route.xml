@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+      android:id="@+id/linlay"
+      android:orientation="vertical"
+        android:background="@drawable/bg1"
+     >
+<ScrollView 
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:id="@+id/scroll_lout"
+    android:layout_weight="1"
+    >
+    <TextView
+        android:id="@+id/simpleinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text=" "
+        android:textSize="16dp" >
+
+        <requestFocus />
+    </TextView>
+</ScrollView>
+    <Button
+        android:id="@+id/getsimplemap"
+        style="@style/btnStylePaprika"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Map View  "
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true" />
+
+</LinearLayout>
