@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/startloc"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:icon="@drawable/gps"
+        android:title="Start Location"/>
+    <item
+        android:id="@+id/stoploc"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:icon="@drawable/gps_stop"
+        android:title="Stop Location"/>
+    <item
+        android:id="@+id/submenu"
+        android:orderInCategory="2"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_core_overflow"
+        android:title="Sub menu">
+        <menu>
+    <item
+        android:id="@+id/normal_map"
+        android:orderInCategory="2"
+        android:showAsAction="collapseActionView"
+        android:icon="@drawable/normal_view"
+        android:title="Normal View"/>
+    <item
+        android:id="@+id/satellite_map"
+        android:orderInCategory="2"
+        android:showAsAction="collapseActionView"
+        android:icon="@drawable/satellite_view"
+        android:title="Satellite View"/>
+    <item
+        android:id="@+id/savemap"
+        android:orderInCategory="3"
+        android:showAsAction="collapseActionView"
+        android:icon="@drawable/saveit"
+        android:title="Save Map"/>
+    </menu>
+    </item>
+</menu> 
